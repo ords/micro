@@ -34,7 +34,7 @@ export class Navigation {
   rootTitle(): string | undefined {
     return this.root.title;
   }
-  pushNavigate<T extends LayoutConfig<any>>(
+  push<T extends LayoutConfig<any>>(
     feature: T,
     params: LayoutParams<T>,
     options?: {
@@ -54,7 +54,7 @@ export class Navigation {
 
     this.history.push(url, _unsafe);
   }
-  navigateRoot<T extends LayoutConfig<any>>(
+  goRoot<T extends LayoutConfig<any>>(
     feature: T,
     params: LayoutParams<T>
   ) {
@@ -66,7 +66,7 @@ export class Navigation {
       this.history.replace(url, _unsafe);
     }
   }
-  navigateBack<T extends LayoutConfig<any>>(
+  back<T extends LayoutConfig<any>>(
     feature: T,
     params: LayoutParams<T>
   ) {

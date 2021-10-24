@@ -1,14 +1,15 @@
 import { LayoutConfig } from "../FeatureRegistry";
-import { pushNavigate, navigateBack } from ".";
+import { Navigation } from ".";
+
+const navigation = new Navigation();
 
 const service_propertyDetail_scoreAdd: LayoutConfig<{
   propertyPreference: number;
 }> = {
   path: ":propertyPreference",
-  handler: () => 5,
 };
 
-pushNavigate(
+navigation.push(
   service_propertyDetail_scoreAdd,
   {
     propertyPreference: 123,
@@ -16,6 +17,6 @@ pushNavigate(
   { root: "Hello" }
 );
 
-navigateBack(service_propertyDetail_scoreAdd, {
+navigation.back(service_propertyDetail_scoreAdd, {
   propertyPreference: 123,
 });
