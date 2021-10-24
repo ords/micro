@@ -1,2 +1,3 @@
-import {} from "../_framework/Navigation";
+import { Navigation } from "../_framework/Navigation";
 
+export const navigation = new Navigation();

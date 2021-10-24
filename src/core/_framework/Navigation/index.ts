@@ -2,92 +2,80 @@ import { LayoutConfig } from "../FeatureRegistry";
 import { createBrowserHistory } from "history";
 import pathToRegexp from "path-to-regexp";
 
-export const history = createBrowserHistory();
-
 export type LayoutParams<T> = T extends LayoutConfig<infer R> ? R : T;
 
-export interface NavigationOptions {
-  root?: string;
-}
+export class Navigation {
+  public history = createBrowserHistory();
+  private historyLength = 0;
+  private root: {
+    title?: string;
+    stackReference?: number;
+  };
+  constructor() {
+    this.history.listen((update) => {
+      if (this.root.stackReference === undefined) {
+        return;
+      }
 
-interface RootReference {
-  title: string;
-  historyStackReference?: number;
-}
-
-let root: RootReference = {
-  title: "",
-};
-
-let historyStackLength = 0;
-
-history.listen(function trackRoot(update) {
-  if (root.historyStackReference === undefined) {
-    return;
+      switch (update.action) {
+        case "PUSH":
+          this.root.stackReference--;
+          this.historyLength++;
+          break;
+        case "POP": {
+          this.root.stackReference++;
+          this.historyLength--;
+          break;
+        }
+        default:
+      }
+    });
   }
-
-  switch (update.action) {
-    case "PUSH":
-      root.historyStackReference--;
-      historyStackLength++;
-      break;
-    case "POP": {
-      root.historyStackReference++;
-      historyStackLength--;
-      break;
+  rootTitle(): string | undefined {
+    return this.root.title;
+  }
+  pushNavigate<T extends LayoutConfig<any>>(
+    feature: T,
+    params: LayoutParams<T>,
+    options?: {
+      root?: string;
     }
-    default:
+  ) {
+    const { _unsafe, ...safeParams } = params;
+
+    const url = pathToRegexp.compile(feature.path)(safeParams);
+
+    if (options?.root) {
+      this.root = {
+        title: options.root,
+        stackReference: 1,
+      };
+    }
+
+    this.history.push(url, _unsafe);
   }
-});
-
-export function pushNavigate<T extends LayoutConfig<any>>(
-  feature: T,
-  params: LayoutParams<T>,
-  options?: NavigationOptions
-) {
-  const { _unsafe, ...safeParams } = params;
-
-  const url = pathToRegexp.compile(feature.path)(safeParams);
-
-  if (options?.root) {
-    root = {
-      title: options.root,
-      // 1 as it will instantly be changed to 0 by listener
-      historyStackReference: 1,
-    };
-  }
-
-  history.push(url, _unsafe);
-}
-
-export function navigateBack<T extends LayoutConfig<any>>(
-  feature: T,
-  params: LayoutParams<T>
-) {
-  return function navigate() {
-    const inAppReferrer = document.referrer === document.location.hostname;
-
-    if (inAppReferrer && historyStackLength) {
-      history.back();
+  navigateRoot<T extends LayoutConfig<any>>(
+    feature: T,
+    params: LayoutParams<T>
+  ) {
+    if (this.root.stackReference !== undefined) {
+      this.history.go(this.root.stackReference);
     } else {
       const { _unsafe, ...safeParams } = params;
       const url = pathToRegexp.compile(feature.path)(safeParams);
-      history.replace(url, _unsafe);
+      this.history.replace(url, _unsafe);
     }
-  };
-}
-
-export function navigateRoot<T extends LayoutConfig<any>>(
-  feature: T,
-  params: LayoutParams<T>
-) {
-  return function navigate() {
-    if (root.historyStackReference !== undefined) {
-      history.go(root.historyStackReference);
+  }
+  navigateBack<T extends LayoutConfig<any>>(
+    feature: T,
+    params: LayoutParams<T>
+  ) {
+    if (this.historyLength) {
+      this.history.back();
     } else {
       const { _unsafe, ...safeParams } = params;
       const url = pathToRegexp.compile(feature.path)(safeParams);
-      history.replace(url, _unsafe);
+      this.history.replace(url, _unsafe);
     }
-  };
+  }
 }
