@@ -1,12 +1,8 @@
+import { LayoutConfig } from "../FeatureRegistry";
 import { createBrowserHistory } from "history";
 import pathToRegexp from "path-to-regexp";
 
 export const history = createBrowserHistory();
-
-export interface LayoutConfig<T extends object> {
-  path: string;
-  params?: T;
-}
 
 export type LayoutParams<T> = T extends LayoutConfig<infer R> ? R : T;
 
