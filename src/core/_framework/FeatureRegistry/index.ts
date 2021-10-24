@@ -3,9 +3,9 @@ export interface LayoutConfig<T extends Object> {
   params?: T;
 }
 
-export class FeatureRegistry {
+export class FeatureRegistry<R> {
   private routes: Array<LayoutConfig<any>> = [];
-  register<T>(layoutConfig: LayoutConfig<T>, handler: (params: T) => any) {
+  register<T>(layoutConfig: LayoutConfig<T>, handler: (params: T) => R) {
     this.routes.push(layoutConfig);
   }
   getRoutes() {
