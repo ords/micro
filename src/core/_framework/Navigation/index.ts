@@ -6,7 +6,6 @@ export type LayoutParams<T> = T extends LayoutConfig<infer R> ? R : T;
 
 export class Navigation {
   public history = createBrowserHistory();
-  private historyLength = 0;
   private root?: {
     title?: string;
     stackReference?: number;
@@ -20,19 +19,17 @@ export class Navigation {
       switch (update.action) {
         case "PUSH":
           this.root.stackReference--;
-          this.historyLength++;
           break;
         case "POP": {
           this.root.stackReference++;
-          this.historyLength--;
           break;
         }
         default:
       }
     });
   }
-  rootTitle(): string | undefined {
-    return this.root?.title;
+  rootTitle(defaultTitle: string): string | undefined {
+    return this.root?.title ?? defaultTitle;
   }
   push<T extends LayoutConfig<any>>(
     feature: T,
@@ -54,10 +51,7 @@ export class Navigation {
 
     this.history.push(url, _unsafe);
   }
-  goRoot<T extends LayoutConfig<any>>(
-    feature: T,
-    params: LayoutParams<T>
-  ) {
+  goRoot<T extends LayoutConfig<any>>(feature: T, params: LayoutParams<T>) {
     if (this.root?.stackReference !== undefined) {
       this.history.go(this.root.stackReference);
     } else {
@@ -66,11 +60,8 @@ export class Navigation {
       this.history.replace(url, _unsafe);
     }
   }
-  back<T extends LayoutConfig<any>>(
-    feature: T,
-    params: LayoutParams<T>
-  ) {
-    if (this.historyLength) {
+  back<T extends LayoutConfig<any>>(feature: T, params: LayoutParams<T>) {
+    if (document.referrer.length && document.referrer === document.location.hostname) {
       this.history.back();
     } else {
       const { _unsafe, ...safeParams } = params;
