@@ -7,13 +7,13 @@ export type LayoutParams<T> = T extends LayoutConfig<infer R> ? R : T;
 export class Navigation {
   public history = createBrowserHistory();
   private historyLength = 0;
-  private root: {
+  private root?: {
     title?: string;
     stackReference?: number;
   };
   constructor() {
     this.history.listen((update) => {
-      if (this.root.stackReference === undefined) {
+      if (this.root?.stackReference === undefined) {
         return;
       }
 
@@ -32,7 +32,7 @@ export class Navigation {
     });
   }
   rootTitle(): string | undefined {
-    return this.root.title;
+    return this.root?.title;
   }
   push<T extends LayoutConfig<any>>(
     feature: T,
@@ -58,7 +58,7 @@ export class Navigation {
     feature: T,
     params: LayoutParams<T>
   ) {
-    if (this.root.stackReference !== undefined) {
+    if (this.root?.stackReference !== undefined) {
       this.history.go(this.root.stackReference);
     } else {
       const { _unsafe, ...safeParams } = params;
