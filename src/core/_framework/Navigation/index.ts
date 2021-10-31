@@ -1,17 +1,19 @@
 import { LayoutConfig } from "../FeatureRegistry";
 import { createBrowserHistory } from "history";
-import pathToRegexp from "path-to-regexp";
+import * as pathToRegexp from "path-to-regexp";
 
 export type LayoutParams<T> = T extends LayoutConfig<infer R> ? R : T;
 
 export class Navigation {
-  public history = createBrowserHistory();
+  public history = createBrowserHistory<{}>();
   private root?: {
     title?: string;
     stackReference?: number;
   };
   constructor() {
-    this.history.listen((update) => {
+   this.history.listen((update:any) => {
+
+    console.log(update)
       if (this.root?.stackReference === undefined) {
         return;
       }
@@ -62,7 +64,7 @@ export class Navigation {
   }
   back<T extends LayoutConfig<any>>(feature: T, params: LayoutParams<T>) {
     if (document.referrer.length && document.referrer === document.location.hostname) {
-      this.history.back();
+      this.history.goBack();
     } else {
       const { _unsafe, ...safeParams } = params;
       const url = pathToRegexp.compile(feature.path)(safeParams);

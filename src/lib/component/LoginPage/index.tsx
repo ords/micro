@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { SxProps } from "@mui/system";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Router, Route } from "react-router-dom";
 import { keyframes } from "@emotion/react";
+
+import { navigation } from "../../../core/navigation";
 
 import "./styles.css";
 
@@ -25,74 +29,96 @@ const bounce = keyframes`
   }
 `;
 
-export default function PageTransitionExamples() {
-  const [firstPage, toggleFirstPage] = useState(true);
+const routes = [
+  { path: "/first", name: "Home", Component: FirstPage },
+  { path: "/second", name: "About", Component: LoadingPage },
+];
 
+export default function PageTransitionExamples() {
   useEffect(function () {
     const interval = setInterval(() => {
-      toggleFirstPage(!firstPage);
-    }, 1000);
+      console.log("toggle");
+      if (document.location.href.endsWith("/second")) {
+        navigation.history.push("/first");
+      } else {
+        navigation.history.push("/second");
+      }
+    }, 2000);
 
     return () => clearInterval(interval);
   });
 
   return (
+    <Router history={navigation.history}>
+      <AnimatedSwitch />
+    </Router>
+  );
+}
+
+function AnimatedSwitch() {
+  return (
     <TransitionGroup>
-      {firstPage && (
-        <CSSTransition classNames="item" timeout={500}>
-          <FirstPage />
-        </CSSTransition>
-      )}
-      {!firstPage && (
-        <CSSTransition classNames="item" timeout={500}>
-          <LoadingPage />
-        </CSSTransition>
-      )}
+      {routes.map(({ path, Component }) => (
+        <Route key={path} exact path={path}>
+          {({ match }) => <Component mounted={!!match} />}
+        </Route>
+      ))}
     </TransitionGroup>
   );
 }
 
-function Page({ children }: any) {
-  <Box
-    sx={{
-      display: "flex",
-      height: "100vh",
-    }}
-  >
-    {children}
-  </Box>;
+interface PageProperties {
+  timeout?: number;
+  mounted?: boolean;
+  children: React.ReactNode;
+  sx?: SxProps;
 }
 
-function FirstPage() {
+function Page({ children, sx, timeout, mounted }: PageProperties) {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        height: "100vh",
-        background: "black",
-        color: "white",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+    <CSSTransition
+      classNames="item"
+      in={mounted}
+      unmountOnExit
+      timeout={timeout ?? 500}
     >
-      HEEELO
-    </Box>
+      <Box
+        sx={{
+          display: "flex",
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          position: "absolute",
+          ...sx,
+        }}
+      >
+        {children}
+      </Box>
+    </CSSTransition>
   );
 }
 
-function LoadingPage() {
+function FirstPage(props: any) {
   return (
-    <Box
+    <Page
+      mounted={props.mounted}
       sx={{
-        display: "flex",
-        height: "100vh",
-        justifyContent: "center",
-        alignItems: "center",
+        background: "black",
+        color: "white",
       }}
     >
+      HEEELO
+    </Page>
+  );
+}
+
+function LoadingPage(props: any) {
+  return (
+    <Page mounted={props.mounted}>
       <Box sx={{ animation: `${bounce} 1s ease infinite` }}>
         <CircularProgress />
       </Box>
-    </Box>
+    </Page>
   );
 }
