@@ -11,14 +11,14 @@ export class Navigation {
     stackReference?: number;
   };
   constructor() {
-   this.history.listen((update:any) => {
+   
+   this.history.listen((location, action) => {
 
-    console.log(update)
       if (this.root?.stackReference === undefined) {
         return;
       }
 
-      switch (update.action) {
+      switch (action) {
         case "PUSH":
           this.root.stackReference--;
           break;
@@ -63,7 +63,10 @@ export class Navigation {
     }
   }
   back<T extends LayoutConfig<any>>(feature: T, params: LayoutParams<T>) {
-    if (document.referrer.length && document.referrer === document.location.hostname) {
+    if (
+      document.referrer.length &&
+      document.referrer === document.location.hostname
+    ) {
       this.history.goBack();
     } else {
       const { _unsafe, ...safeParams } = params;
