@@ -1,14 +1,14 @@
-.item-enter {
+.animate--view-fade-enter {
   opacity: 0;
 }
-.item-enter-active {
+.animate--view-fade-enter-active {
   opacity: 1;
   transition: opacity 500ms ease-in;
 }
-.item-exit {
+.animate--view-fade-exit {
   opacity: 1;
 }
-.item-exit-active {
+.animate--view-fade-exit-active {
   opacity: 0;
   transition: opacity 500ms ease-in;
 }
