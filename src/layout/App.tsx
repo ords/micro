@@ -1,16 +1,10 @@
 import React, { useEffect } from "react";
 
 import { TransitionGroup } from "react-transition-group";
-import { Router, Route } from "react-router-dom";
+import { Router } from "react-router-dom";
 
 import { navigation } from "../core/navigation";
-import LoadingView from "../lib/component/LoadingView";
-import LoginView from "../feature/Login/LoginView";
-
-const routes = [
-  { path: "/first", name: "Home", Component: LoginView },
-  { path: "/second", name: "About", Component: LoadingView },
-];
+import { routes } from "../feature";
 
 function PageTransitionExamples() {
   useEffect(function () {
@@ -34,15 +28,7 @@ function PageTransitionExamples() {
 }
 
 function AnimatedSwitch() {
-  return (
-    <TransitionGroup>
-      {routes.map(({ path, Component }) => (
-        <Route key={path} exact path={path}>
-          {({ match }) => <Component animateIn={!!match} />}
-        </Route>
-      ))}
-    </TransitionGroup>
-  );
+  return <TransitionGroup>{routes}</TransitionGroup>;
 }
 
 function App() {
