@@ -38,7 +38,7 @@ function AnimatedSwitch() {
     <TransitionGroup>
       {routes.map(({ path, Component }) => (
         <Route key={path} exact path={path}>
-          {({ match }) => <Component mounted={!!match} />}
+          {({ match }) => <Component animateIn={!!match} />}
         </Route>
       ))}
     </TransitionGroup>

@@ -3,7 +3,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
 import { keyframes } from "@emotion/react";
-import View from "../View";
+import View, { ViewProps } from "../View";
 
 const bounce = keyframes`
   from, 20%, 53%, 80%, to {
@@ -23,9 +23,9 @@ const bounce = keyframes`
   }
 `;
 
-export default function LoadingView(props: any) {
+export default function LoadingView(props: ViewProps) {
   return (
-    <View mounted={props.mounted}>
+    <View {...props}>
       <Box sx={{ animation: `${bounce} 1s ease infinite` }}>
         <CircularProgress />
       </Box>

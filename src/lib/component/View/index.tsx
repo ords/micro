@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Box from "@mui/material/Box";
 import { SxProps } from "@mui/system";
 
@@ -6,11 +6,11 @@ import { CSSTransition } from "react-transition-group";
 
 import "./styles.css";
 
-export interface ViewProperties {
+export interface ViewProps {
   timeout?: number;
-  mounted?: boolean;
+  animateIn?: boolean;
   animation?: "fade";
-  children: React.ReactNode;
+  children?: ReactNode;
   sx?: SxProps;
 }
 
@@ -18,13 +18,13 @@ export default function View({
   children,
   sx,
   timeout,
-  mounted,
+  animateIn,
   animation = "fade",
-}: ViewProperties) {
+}: ViewProps) {
   return (
     <CSSTransition
       classNames={"animate--view-" + animation}
-      in={mounted}
+      in={animateIn}
       unmountOnExit
       timeout={timeout ?? 500}
     >

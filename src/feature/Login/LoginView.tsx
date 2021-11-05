@@ -1,10 +1,11 @@
 import React from "react";
 import View from "../../lib/component/View";
+import { RoutedViewProps } from "../../lib/component/ViewRoute";
 
-export default function LoginView(props: any) {
+export default function LoginView({ animateIn }: RoutedViewProps) {
   return (
     <View
-      mounted={props.mounted}
+      animateIn={animateIn}
       sx={{
         background: "black",
         color: "white",
