@@ -3,6 +3,7 @@ export interface LayoutConfig<T extends Object> {
   params?: T;
 }
 
+/*
 export class FeatureRegistry<R> {
   private routes: Array<LayoutConfig<any>> = [];
   register<T>(layoutConfig: LayoutConfig<T>, handler: (params: T) => R) {
@@ -12,3 +13,4 @@ export class FeatureRegistry<R> {
     return this.routes;
   }
 }
+*/
