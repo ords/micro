@@ -9,12 +9,12 @@ import { routes } from "../feature";
 function PageTransitionExamples() {
   useEffect(function () {
     const interval = setInterval(() => {
-      console.log("toggle");
+     /* console.log("toggle");
       if (document.location.href.endsWith("/second")) {
         navigation.history.push("/first");
       } else {
         navigation.history.push("/second");
-      }
+      }*/
     }, 2000);
 
     return () => clearInterval(interval);
