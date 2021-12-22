@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "module": "dist",
   "main": "dist",
+  "sideEffects": false,
+  "type": "module",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@ords/ui-core-framework": "^1.0.0"
   },

@@ -2,9 +2,9 @@
   "name": "@ords/ui-core-app-shell",
   "version": "1.0.0",
   "module": "dist",
+  "main": "dist",
   "sideEffects": false,
   "type": "module",
-  "main": "dist",
   "files": [
     "dist"
   ],

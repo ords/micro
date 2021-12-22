@@ -17,13 +17,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
-  "references": [
-    {
-      "path": "../ui-core"
-    },
-    {
-      "path": "../ui-library"
-    }
-  ]
+  "include": ["src"]
 }
