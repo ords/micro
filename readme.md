@@ -1,6 +1,5 @@
 # Getting Started
-
-This Project uses Typescript
+This Project uses Typescript and react to create a micro frontend architecture
 
 # Packages
 Here the different packages are described. Please see the picture below for the high level architecture.
@@ -27,4 +26,6 @@ Self explaintory - register of ui features
 Our Design System folder including common utils
 
 ### Main Application
-The main application with the implementation of layouts and features
+The main application with the implementation of layouts and features. Every layout is meant to only ever have one routed view. Every you can have multiple fragments or a layout could also potentially contain multiple fragments along with the main view.
+
+.. Should illustrate what i mean
