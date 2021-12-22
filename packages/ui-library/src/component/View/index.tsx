@@ -1,29 +1,46 @@
 import React, { ReactNode } from "react";
 import Box from "@mui/material/Box";
 import { SxProps } from "@mui/system";
-
+import { styled } from "@mui/material/styles";
 import { CSSTransition } from "react-transition-group";
 
-import "./styles.css";
+const PREFIX = "fade-animation";
+
+const classes = {
+  enter: `${PREFIX}-enter`,
+  enterActive: `${PREFIX}-enterActive`,
+  exit: `${PREFIX}-exit`,
+  exitActive: `${PREFIX}-exitActive`,
+};
 
 export interface ViewProps {
   timeout?: number;
   animateIn?: boolean;
-  animation?: "fade";
   children?: ReactNode;
   sx?: SxProps;
 }
 
-export default function View({
-  children,
-  sx,
-  timeout,
-  animateIn,
-  animation = "fade",
-}: ViewProps) {
+const StyledTransition = styled(CSSTransition)(() => ({
+  [`&.${classes.enter}`]: {
+    opacity: 0,
+  },
+  [`&.${classes.enterActive}`]: {
+    opacity: 1,
+    transition: "opacity 500ms ease-in",
+  },
+  [`&.${classes.exit}`]: {
+    opacity: 1,
+  },
+  [`&.${classes.exitActive}`]: {
+    opacity: 0,
+    transition: "opacity 500ms ease-in",
+  },
+}));
+
+export default function View({ children, sx, timeout, animateIn }: ViewProps) {
   return (
-    <CSSTransition
-      classNames={"animate--view-" + animation}
+    <StyledTransition
+      classNames={classes}
       in={animateIn}
       unmountOnExit
       timeout={timeout ?? 500}
@@ -41,6 +58,6 @@ export default function View({
       >
         {children}
       </Box>
-    </CSSTransition>
+    </StyledTransition>
   );
 }
