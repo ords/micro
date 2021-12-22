@@ -1,5 +1,5 @@
 # Getting Started
-This Project uses Typescript and react to create a micro frontend architecture
+This Project uses Typescript and react to create a micro frontend architecture. Most over engineered project in the history of projects.
 
 # Packages
 Here the different packages are described. Please see the picture below for the high level architecture.
@@ -9,18 +9,22 @@ We consist of four main parts:
 
 - ui-framework
 - ui-core
-- ui-library
 - ui-registy
+- ui-bootstrap
+- ui-library
 - main-application
 
 ### UI Framework
 The micro frontend framework used. The core code that enables our application to commuicate.
 
 ### UI Core
-Contains contracts for app shell and core services + any singletons that are needed across the app.
+Contains contracts for app shell and core data services + reference to any singletons that are needed across the app. Will contain no view code.
 
 ### UI Registry
 Self explaintory - register of ui features. Here features are registered on the "global" name scope. Think of it as the DNS of the our main-application.
+
+### UI Bootstrap
+Implementation of core services which are used across the application.
 
 ### UI Library
 Our Design System folder including common utils
