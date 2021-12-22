@@ -20,7 +20,7 @@ The micro frontend framework used. The core code that enables our application to
 Contains contracts for app shell and core services + any singletons that are needed across the app.
 
 ### UI Registry
-Self explaintory - register of ui features
+Self explaintory - register of ui features. Here features are registered on the "global" name scope. Think of it as the DNS of the our main-application.
 
 ### UI Library
 Our Design System folder including common utils
