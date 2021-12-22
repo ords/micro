@@ -1,6 +1,6 @@
 import React from "react";
-import View from "@ords/ui-library/component/component/View";
-import { RoutedViewProps } from "@ords/ui-library/component/component/ViewRoute";
+import View from "@ords/ui-library/dist/component/View";
+import { RoutedViewProps } from "@ords/ui-library/dist/component/ViewRoute";
 import { useForm, Controller } from "react-hook-form";
 
 import Box from "@mui/material/Box";

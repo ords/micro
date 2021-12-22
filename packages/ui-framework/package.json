@@ -1,5 +1,5 @@
 {
-  "name": "@ords/ui-core-framework",
+  "name": "@ords/ui-framework",
   "version": "1.0.0",
   "module": "dist",
   "sideEffects": false,

@@ -1,6 +1,6 @@
 import React from "react";
-import View from "@ords/ui-library/component/View";
-import { RoutedViewProps } from "@ords/ui-library/ViewRoute";
+import View from "@ords/ui-library/dist/component/View";
+import { RoutedViewProps } from "@ords/ui-library/dist/component/ViewRoute";
 
 export default function RegisterView({ animateIn }: RoutedViewProps) {
   return (

@@ -1,5 +1,5 @@
 {
-  "name": "@ords/ui-core-app-shell",
+  "name": "@ords/ui-registry",
   "version": "1.0.0",
   "module": "dist",
   "main": "dist",
@@ -9,7 +9,7 @@
     "dist"
   ],
   "dependencies": {
-    "@ords/ui-core-framework": "^1.0.0"
+    "@ords/ui-framework": "^1.0.0"
   },
   "scripts": {
     "build": "rollup -c rollup.config.js"

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { TransitionGroup } from "react-transition-group";
 import { Router } from "react-router-dom";
 
-import { navigation } from "@ords/ui-core/navigation";
+import { navigation } from "../../../ui-core/dist";
 import { routes } from "../feature";
 
 function PageTransitionExamples() {

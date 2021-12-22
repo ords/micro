@@ -1,4 +1,4 @@
-import { LayoutConfig } from "@ords/ui-core-framework";
+import { LayoutConfig } from "@ords/ui-framework";
 
 // could update to react only here?
 // REGISTRY NOT NEEDED JUST NEED A LIST OF LAYOUT CONFIGS HERE

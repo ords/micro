@@ -1,6 +1,6 @@
-import { login_login, login_registration } from "..@ords/ui-core/registry";
+import { login_login, login_registration } from "@ords/ui-registry";
 
-import RoutedView from "@ords/ui-library/component/ViewRoute";
+import RoutedView from "@ords/ui-library/dist/component/ViewRoute";
 
 import { LoginView, RegistrationView } from "./Login";
 
