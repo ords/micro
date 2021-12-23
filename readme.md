@@ -2,15 +2,14 @@
 This Project uses Typescript and react to create a micro frontend architecture. Most over engineered project in the history of projects.
 
 # Packages
-Here the different packages are described. Please see the picture below for the high level architecture.
+Here the different packages are described. Please see the picture below for the high level architecture. All of our diffrent packages can contain both UI and or API code.
 
 ## Architecture
-We consist of four main parts:
+We consist of main parts:
 
 - ui-framework
 - ui-core
 - ui-registy
-- ui-bootstrap
 - ui-library
 - main-application
 
@@ -23,22 +22,41 @@ Contains contracts for app shell and core data services + reference to any singl
 ### UI Registry
 Self explaintory - register of ui features. Here features are registered on the "global" name scope. Think of it as the DNS of the our main-application.
 
-### UI Bootstrap
-Implementation of core services which are used across the application.
-
 ### UI Library
 Our Design System folder including common utils
 
-### Main Application
-The main application with the implementation of layouts and features. Every layout is meant to only ever have one routed view. Every you can have multiple fragments or a layout could also potentially contain multiple fragments along with the main view.
+## Main Application
+There are three components to our main application.
 
-.. Should illustrate what i mean
+- bootstrap
+- feature
+- layout
+
+### Boostrap
+Reference specific parts of modules which has boostrap code which are needed.
+
+### Layout
+Containers of features (views) or fragments (view fragments).
+
+.. should illustrate this
+
+### Feature
+Feature implementations as required
+
+### Naming Convention Features
+We have created a scaleable naming convention:
+
+- app_namespace_feature-name
+
+Features don't need a name space, but as features invovle they a namespace may evolve as complexity grows. Examples of this could be app_authenticate which over time may split into app_authenticate_login and app_authenticate_register.
 
 ## Interresting Reads
 https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API/Using_channel_messaging
 
-## Brain Dump
-Could move layouts into its own ui-layout package that way i could create standalone ui-feature--name packages which could reference a ui-layout package and then have its own playground. Our main application could then reference the ui-feature--name package as a way to decouple dependencies. We can then roll back or roll forward. 
-
 ## Compatability Node v17 MacOS
 export NODE_OPTIONS=--openssl-legacy-provider
+
+## todo
+Implement module federation so main app reference app_authenticate + reference a bootstrap
+
+also implement a tasks folder which can be used to create new app parts.
