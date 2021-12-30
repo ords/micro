@@ -57,9 +57,10 @@ https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API/Using_cha
 export NODE_OPTIONS=--openssl-legacy-provider
 
 ## todo
-Implement module federation so main app reference app_authenticate + reference a bootstrap
-
-also implement a tasks folder which can be used to create new app parts.
+- implement a tasks folder with tasks like:
+- Create new features
+- Locally build workspaces needed
+- Detect workspace changes and only build those needed
 
 ## Open source sync
 git push github
