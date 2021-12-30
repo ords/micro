@@ -46,9 +46,9 @@ Feature implementations as required
 ### Naming Convention Features
 We have created a scaleable naming convention:
 
-- app_namespace_feature-name
+- feat_namespace_feature-name
 
-Features don't need a name space, but as features invovle they a namespace may evolve as complexity grows. Examples of this could be app_authenticate which over time may split into app_authenticate_login and app_authenticate_register.
+Features don't need a name space, but as features invovle they a namespace may evolve as complexity grows. Examples of this could be feat_auth which over time may split into feat_auth_login and feat_aut_register.
 
 ## Interresting Reads
 https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API/Using_channel_messaging
@@ -60,3 +60,6 @@ export NODE_OPTIONS=--openssl-legacy-provider
 Implement module federation so main app reference app_authenticate + reference a bootstrap
 
 also implement a tasks folder which can be used to create new app parts.
+
+## Open source sync
+git push github
