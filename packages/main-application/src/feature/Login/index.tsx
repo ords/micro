@@ -1,4 +1,3 @@
 import { lazy } from "react";
-
 export const LoginView = lazy(() => import("./LoginView"));
-export const RegistrationView = lazy(() => import("./RegisterView"));
+export const RegistrationView = lazy(() => import("@ords/feature_auth"));
