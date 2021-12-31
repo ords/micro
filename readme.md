@@ -26,24 +26,22 @@ Self explaintory - register of ui features. Here features are registered on the 
 Our Design System folder including common utils
 
 ## Main Application
-There are three components to our main application.
+There are three components to our main application. This is the configuration of our main application from all of our other packages.
 
 - bootstrap
-- feature
+- routes
 - layout
 
 ### Boostrap
-Reference specific parts of modules which has boostrap code which are needed.
+Reference to boostrap code from features as needed. Example reference (to be implemented) is the bootstrap code to implement the Authorization service from the *auth feature*.
+
+### Routes
+Routes based on the paths in our registry with references to views from a feature.
 
 ### Layout
-Containers of features (views) or fragments (view fragments).
+The purpose of a layout is to do view orchastration. A Layout will have a router which contains a set of routes. While a layout in general only display one View (matched route) it may also display view fragments. View fragment will in general not require a route and won't take up the entire screen. View Fragments could for example be a nav bar.
 
-.. should illustrate this
-
-### Feature
-Feature implementations as required
-
-### Naming Convention Features
+## Naming Convention Features
 We have created a scaleable naming convention:
 
 - feat_namespace_feature-name
@@ -59,8 +57,8 @@ export NODE_OPTIONS=--openssl-legacy-provider
 ## todo
 - implement a tasks folder with tasks like:
 - Create new features
-- Locally build workspaces needed
-- Detect workspace changes and only build those needed
+- Locally quikcly build workspaces needed
+- CI/CD Detect workspace changes and only build those needed
 
 ## Open source sync
 git push github

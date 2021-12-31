@@ -4,7 +4,7 @@ import { TransitionGroup } from "react-transition-group";
 import { Router } from "react-router-dom";
 
 import { navigation } from "@ords/ui-core";
-import { routes } from "../feature";
+import { routes } from "../routes";
 
 // wrong types
 const Demo = Router as any
