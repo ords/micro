@@ -1,5 +1,5 @@
 # Getting Started
-This Project uses Typescript and react to create a micro frontend architecture. Most over engineered project in the history of projects. Run npm install and `npm run build --workspaces --if-present` to build local files.
+This Project uses Typescript and react to create a micro frontend architecture. Most over engineered project in the history of projects. Run npm install and `npm run build:minimal-required --workspaces --if-present` to build local files.
 
 # Packages
 Here the different packages are described. Please see the picture below for the high level architecture. All of our diffrent packages can contain both UI and or API code.
