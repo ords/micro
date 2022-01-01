@@ -50,6 +50,8 @@ Features don't need a name space, but as features invovle they a namespace may e
 
 ## Interresting Reads
 https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API/Using_channel_messaging
+https://tsh.io/blog/micro-frontend-tutorial/
+https://github.com/hasanayan/craco-module-federation
 
 ## Compatability Node v17 MacOS
 export NODE_OPTIONS=--openssl-legacy-provider
