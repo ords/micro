@@ -3,9 +3,6 @@
   "compilerOptions": {
     "outDir": "dist",
     "noEmit": true,
-    // required when not all features may be build
-    // create second file without this for prod builds
-    // "skipLibCheck": true
   },
   "include": ["src"]
 }
