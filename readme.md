@@ -56,11 +56,16 @@ https://github.com/hasanayan/craco-module-federation
 ## Compatability Node v17 MacOS
 export NODE_OPTIONS=--openssl-legacy-provider
 
+## Packages Changed
+To indentfy which package has changed since a commit and hence which you should consider to merge into your branch and build from master you can run the following command: 
+
+`node ./tasks/getChangedPackages`
+
 ## todo
-- implement a tasks folder with tasks like:
-- Create new features
-- Locally quikcly build only the workspaces actually needed and ignore types/imports for rest
+- Implement a tasks folder with tasks like:
+- Create new features easily
 - CI/CD Detect workspace changes and only build those needed
 
 ## Open source sync
 git push github
+
