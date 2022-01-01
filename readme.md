@@ -59,7 +59,7 @@ export NODE_OPTIONS=--openssl-legacy-provider
 ## todo
 - implement a tasks folder with tasks like:
 - Create new features
-- Locally quikcly build only the workspaces actually needed
+- Locally quikcly build only the workspaces actually needed and ignore types/imports for rest
 - CI/CD Detect workspace changes and only build those needed
 
 ## Open source sync
