@@ -6,27 +6,25 @@ import { Router } from "react-router-dom";
 import { navigation } from "@ords/ui-core";
 import { routes } from "../routes";
 
-// wrong types
-const Demo = Router as any
 
 function PageTransitionExamples() {
   useEffect(function () {
     const interval = setInterval(() => {
       console.log("toggle");
-      /*if (document.location.href.endsWith("/second")) {
+      if (document.location.href.endsWith("/second")) {
         navigation.history.push("/first");
       } else {
         navigation.history.push("/second");
-      } */
+      } 
     }, 2000);
 
     return () => clearInterval(interval);
   });
 
   return (
-    <Demo history={navigation.history}>
+    <Router history={navigation.history}>
       <AnimatedSwitch />
-    </Demo>
+    </Router>
   );
 }
 
