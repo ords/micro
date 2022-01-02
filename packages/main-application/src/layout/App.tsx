@@ -1,39 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { TransitionGroup } from "react-transition-group";
-import { Router } from "react-router-dom";
+import { Router, Routes } from "react-router-dom";
 
 import { navigation } from "@ords/ui-core";
 import { routes } from "../routes";
 
+function CleanLayout() {
+  const [location, setLocation] = useState(navigation.history.location);
 
-function PageTransitionExamples() {
   useEffect(function () {
     const interval = setInterval(() => {
-      console.log("toggle");
       if (document.location.href.endsWith("/second")) {
         navigation.history.push("/first");
       } else {
         navigation.history.push("/second");
-      } 
+      }
     }, 2000);
 
-    return () => clearInterval(interval);
+    const clearHistoryListner = navigation.history.listen(function updateState(
+      nextLocation
+    ) {
+      setLocation(nextLocation);
+    });
+
+    return () => {
+      clearInterval(interval);
+      clearHistoryListner();
+    };
   });
 
   return (
-    <Router history={navigation.history}>
-      <AnimatedSwitch />
-    </Router>
+    <TransitionGroup>
+      <Router navigator={navigation.history} location={location}>
+        <Routes>{routes}</Routes>;
+      </Router>
+    </TransitionGroup>
   );
 }
 
-function AnimatedSwitch() {
-  return <TransitionGroup>{routes}</TransitionGroup>;
-}
-
-function App() {
-  return <PageTransitionExamples />;
-}
-
-export default App;
+export default CleanLayout;

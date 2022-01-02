@@ -1,22 +1,27 @@
-
 import { lazy } from "react";
+import React from "react";
 import { login_login, login_registration } from "@ords/ui-registry";
+import { Route } from "react-router-dom";
 
-import RoutedView from "@ords/ui-library/dist/component/ViewRoute";
+import ViewRoute from "./ViewRoute";
 
-// TODO: MAKE IMAGES WORK IN ROLLUP AND PUT THIS IN A SEPERATE FEATURE
 export const LoginView = lazy(() => import("@ords/feature_auth/dist/Login"));
-export const RegistrationView = lazy(() => import("@ords/feature_auth/dist/Registration"));
+export const RegistrationView = lazy(
+  () => import("@ords/feature_auth/dist/Registration")
+);
 
+// TODO: Auto generate this file based on a config
 export const routes = [
-  <RoutedView
+  <Route
     key={login_login.path}
     path={login_login.path}
-    Component={LoginView}
+    element={<ViewRoute path={login_login.path} Component={LoginView} />}
   />,
-  <RoutedView
+  <Route
     key={login_registration.path}
     path={login_registration.path}
-    Component={RegistrationView}
+    element={
+      <ViewRoute path={login_registration.path} Component={RegistrationView} />
+    }
   />,
 ];
