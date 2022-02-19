@@ -20,7 +20,7 @@ const nodeProjects = fs.readdirSync("packages").map((dir) => {
 function createConfigContent(packageName) {
 
   const name = packageName.replace("@", "").replace("/", "_")
-
+  console.log(name, `${repositoryName} ${packageName}`)
   return `
   sonar.projectKey=${name}
   sonar.organization=${sonarOrganisation}
@@ -37,7 +37,7 @@ const buildContent = YAML.parse(file)
 buildContent.jobs = {}
 
 for (let nodeProject of nodeProjects) {
-  // createFile(nodeProject)
+  createFile(nodeProject)
   const jobID = nodeProject[1].replace("@", "").replace("/", "_")
   buildContent.jobs[jobID] = (
     {
