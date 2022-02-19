@@ -41,7 +41,7 @@ for (let nodeProject of nodeProjects) {
   const jobID = nodeProject[1].replace("@", "").replace("/", "_")
   buildContent.jobs[jobID] = (
     {
-      name: 'SonarCloud',
+      name: 'SonarCloud ' + nodeProject[1],
       'runs-on': 'ubuntu-latest',
       steps: [
         { uses: 'actions/checkout@v2', with: { "fetch-depth": 0 } },
