@@ -5,9 +5,9 @@ import { Route } from "react-router-dom";
 
 import ViewRoute from "./ViewRoute";
 
-export const LoginView = lazy(() => import("@ords/feature_auth/dist/Login"));
+export const LoginView = lazy(() => import("@ords/feature-auth/dist/Login"));
 export const RegistrationView = lazy(
-  () => import("@ords/feature_auth/dist/Registration")
+  () => import("@ords/feature-auth/dist/Registration")
 );
 
 // TODO: Auto generate this file based on a config

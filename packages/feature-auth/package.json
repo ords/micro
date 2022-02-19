@@ -1,5 +1,5 @@
 {
-  "name": "@ords/feature_auth",
+  "name": "@ords/feature-auth",
   "version": "0.1.0",
   "private": true,
   "module": "dist",

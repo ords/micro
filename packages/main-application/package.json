@@ -6,7 +6,7 @@
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
     "@mui/material": "^5.0.4",
-    "@ords/feature_auth": "*",
+    "@ords/feature-auth": "*",
     "@ords/ui-core": "*",
     "@ords/ui-library": "*",
     "@ords/ui-registry": "*",

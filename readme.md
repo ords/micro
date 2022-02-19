@@ -44,9 +44,9 @@ The purpose of a layout is to do view orchastration. A Layout will have a router
 ## Naming Convention Features
 We have created a scaleable naming convention:
 
-- feat_namespace_feature-name
+- feature-namespace_feature-name
 
-Features don't need a name space, but as features invovle they a namespace may evolve as complexity grows. Examples of this could be feat_auth which over time may split into feat_auth_login and feat_aut_register.
+Features don't need a name space, but as features invovle they a namespace may evolve as complexity grows. Examples of this could be feature-auth which over time may split into feat-auth_login and feat-auth_register.
 
 ## Interresting Reads
 https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API/Using_channel_messaging
