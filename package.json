@@ -2,5 +2,8 @@
   "private": true,
   "workspaces": [
     "./packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "yaml": "^1.10.2"
+  }
 }
