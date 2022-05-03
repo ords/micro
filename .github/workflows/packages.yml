@@ -13,13 +13,12 @@ jobs:
     name: All Packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: setup-node@v3
-        with:
-          node-version: 14
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build --workspaces
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 14
+        cache: 'npm'
+    - run: npm ci
   
