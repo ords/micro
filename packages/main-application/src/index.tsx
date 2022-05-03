@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./layout/App";
+import CleanLayout from "./layout/CleanLayout";
 import "./bootstrap";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CleanLayout />
   </React.StrictMode>,
   document.getElementById("root")
 );
