@@ -1,6 +1,5 @@
 import React from "react";
-import View from "@ords/ui-library/dist/component/View";
-import { RoutedViewProps } from "@ords/ui-library/dist/component/ViewRoute";
+import View, { ViewProps } from "@ords/ui-library/dist/component/View";
 import { useForm, Controller } from "react-hook-form";
 
 import Box from "@mui/material/Box";
@@ -9,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import srcLogoWebp from "./icon-small.webp";
 import srcLogoPng from "./icon-small.png";
 
-export default function LoginView({ animateIn }: RoutedViewProps) {
+export default function LoginView({ animateIn }: ViewProps) {
   const { control, handleSubmit } = useForm();
   const onSubmit = (data: any) => console.log(data);
 

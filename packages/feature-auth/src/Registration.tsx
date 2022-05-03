@@ -1,8 +1,7 @@
 import React from "react";
-import View from "@ords/ui-library/dist/component/View";
-import { RoutedViewProps } from "@ords/ui-library/dist/component/ViewRoute";
+import View, { ViewProps } from "@ords/ui-library/dist/component/View";
 
-export default function FeatureAuth({ animateIn }: RoutedViewProps) {
+export default function FeatureAuth({ animateIn }: ViewProps) {
   return (
     <View
       animateIn={animateIn}
