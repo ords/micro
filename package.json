@@ -1,7 +1,11 @@
 {
   "private": true,
   "workspaces": [
-    "./packages/*"
+    "./packages/ui-core",
+    "./packages/ui-library",
+    "./packages/ui-registry",
+    "./packages/feature-auth",
+    "./packages/main-application"
   ],
   "devDependencies": {
     "yaml": "^1.10.2"
