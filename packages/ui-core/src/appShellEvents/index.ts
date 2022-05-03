@@ -1,4 +1,4 @@
-import { EventHub } from "@ords/ui-framework"
+import { EventHub } from "./EventHub";
 
 const DISPLAY_SNACKBAR = "DISPLAY_SNACKBAR";
 

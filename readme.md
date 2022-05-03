@@ -7,17 +7,13 @@ Here the different packages are described. Please see the picture below for the 
 ## Architecture
 We consist of main parts:
 
-- ui-framework
 - ui-core
 - ui-registy
 - ui-library
 - main-application
 
-### UI Framework
-The micro frontend framework used. The core code that enables our application to commuicate.
-
-### UI Core
-Contains contracts for app shell and core data services + reference to any singletons that are needed across the app. Will contain no view code.
+### UI Core (Framework)
+Contains contracts/framework for app shell and core data services + reference to any singletons that are needed across the app. Will contain no view code.
 
 ### UI Registry
 Self explaintory - register of ui features. Here features are registered on the "global" name scope. Think of it as the DNS of the our main-application.

@@ -1,4 +1,4 @@
-import { ObservableState } from "@ords/ui-framework";
+import { ObservableState } from "./ObservableState";
 
 export interface AppShellContext {
   title: string;

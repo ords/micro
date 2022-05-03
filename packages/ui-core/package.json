@@ -8,9 +8,7 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@ords/ui-framework": "^1.0.0"
-  },
+  "dependencies": {},
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "build:minimal-required": "rollup -c rollup.config.js"
