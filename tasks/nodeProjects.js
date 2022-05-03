@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 const nodeProjects = fs.readdirSync("packages").map((dir) => {
   try {
     const data = fs.readFileSync(path.join("packages", dir, "package.json"))
