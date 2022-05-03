@@ -18,8 +18,16 @@ jobs:
         fetch-depth: 0
     - uses: actions/setup-node@v3
       with:
-        node-version: 14
+        node-version: 16
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --workspaces --if-present
-  
+    - name: npm install, build, and test
+      run: |
+        npm ci
+        npm run build --workspaces --if-present
+        npm test
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: main-application
+        retention-days: 5
+        path: packages/main-application/build
