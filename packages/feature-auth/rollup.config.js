@@ -2,7 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import del from 'rollup-plugin-delete'
 import image from 'rollup-plugin-img';
 
-export default {
+const config = {
   input: ["src/Registration.tsx", "src/Login.tsx"],
   output: [{
     dir: "dist",
@@ -16,5 +16,7 @@ export default {
     limit: 10000
   }), typescript()]
 };
+
+export default config
 
 // using del seems to clash with typescript in our main app - race condition?
