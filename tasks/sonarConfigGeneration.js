@@ -1,26 +1,14 @@
 const fs = require("fs");
 const path = require("path");
 const YAML = require('yaml');
+const { nodeProjects } = require("./nodeProjects")
 
 const filename = "sonar-project.properties"
 const repositoryName = "Github Micro"
 const sonarOrganisation = "ords"
-const githubBuildFilePath = path.join(".github", "workflows", "sonar.yml")
-
-const nodeProjects = fs.readdirSync("packages").map((dir) => {
-  try {
-    const data = fs.readFileSync(path.join("packages", dir, "package.json"))
-    const fileDirPath = path.join("packages", dir)
-    return [fileDirPath, JSON.parse(data).name]
-  } catch {
-    return null
-  }
-}).filter((value) => value !== null)
 
 function createConfigContent(packageName) {
-
   const name = packageName.replace("@", "").replace("/", "_")
-  console.log(name, `${repositoryName} ${packageName}`)
   return `
   sonar.projectKey=${name}
   sonar.organization=${sonarOrganisation}
@@ -32,6 +20,7 @@ function createFile(nodeProject) {
   fs.writeFileSync(path.join(nodeProject[0], filename), createConfigContent(nodeProject[1]))
 }
 
+const githubBuildFilePath = path.join(".github", "workflows", "sonar.yml")
 const file = fs.readFileSync(githubBuildFilePath, 'utf8')
 const buildContent = YAML.parse(file)
 buildContent.jobs = {}
