@@ -33,7 +33,7 @@ for (let nodeProject of nodeProjects) {
       name: 'SonarCloud ' + nodeProject[1],
       'runs-on': 'ubuntu-latest',
       steps: [
-        { uses: 'actions/checkout@v2', with: { "fetch-depth": 0 } },
+        { uses: 'actions/checkout@v3', with: { "fetch-depth": 0 } },
         {
           name: 'SonarCloud Scan',
           uses: 'SonarSource/sonarcloud-github-action@master',
