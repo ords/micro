@@ -33,6 +33,7 @@ jobs:
         path: |
           packages/main-application/build
           packages/main-host/package.json
+          packages/main-host/package-lock.json
           packages/main-host/node_modules
   deploy:
     runs-on: ubuntu-latest
