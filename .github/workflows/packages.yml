@@ -36,6 +36,7 @@ jobs:
           packages/main-host/package-lock.json
           packages/main-host/node_modules
   deploy:
+    name: Deploy & Build Host
     runs-on: ubuntu-latest
     needs: build-everything
     environment:
