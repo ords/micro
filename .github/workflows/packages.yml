@@ -25,16 +25,15 @@ jobs:
       run: |
         npm ci
         npm run build --workspaces --if-present
+    - name: move main-application to host
+      run: mv packages/main-application/build packages/main-host/build
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
       with:
         name: main-application
         retention-days: 7
         path: |
-          packages/main-application/build
-          packages/main-host/package.json
-          packages/main-host/package-lock.json
-          packages/main-host/node_modules
+          packages/main-host
   deploy:
     name: Deploy & Build Host
     runs-on: ubuntu-latest
