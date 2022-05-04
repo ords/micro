@@ -47,13 +47,6 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: main-application
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
-    - name: npm install production dependencies
-      run: |
-        npm ci
     - name: 'Deploy to Azure WebApp'
       id: deploy-to-webapp 
       uses: azure/webapps-deploy@0b651ed7546ecfc75024011f76944cb9b381ef1e
