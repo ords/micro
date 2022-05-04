@@ -1,0 +1,11 @@
+{
+  "name": "@ords/main-host",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "serve": "13.0.2"
+  },
+  "scripts": {
+    "start": "serve build"
+  }
+}
